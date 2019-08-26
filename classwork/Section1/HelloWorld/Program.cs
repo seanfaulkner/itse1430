@@ -30,6 +30,9 @@ namespace HelloWorld
             double totalPay = payRate * hours;
 
             string fullName = "Fred" + " Jones";
+
+
+
         }
     }
 }
