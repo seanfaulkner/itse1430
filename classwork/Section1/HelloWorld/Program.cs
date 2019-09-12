@@ -35,10 +35,8 @@ namespace HelloWorld
                         quit = true;
                         break;
                     }
-
                     default: Console.WriteLine ("Not supported"); break;
-                };
-                //    char input = DisplayMenu ();
+                };               
                 //    if (input == 'A')
                 //        AddMovie ();
                 //    else if (input == 'D')
