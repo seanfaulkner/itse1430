@@ -19,6 +19,6 @@ namespace Itse1430.MovieLib
         public int runLength;
 
         // Can new up other objects
-        private Movie originalMovie = new Movie ();
+        //private Movie originalMovie = new Movie ();
     }
 }

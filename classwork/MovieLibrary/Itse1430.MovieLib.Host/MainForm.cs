@@ -15,5 +15,12 @@ namespace Itse1430.MovieLib.Host
             movie.title = "Jaws";
             movie.description = movie.title;
         }
+
+        private void AddToolStripMenuItem_Click ( object sender, EventArgs e )
+        {
+            var form = new MovieForm ();
+
+            form.ShowDialog ();
+        }
     }
 }
