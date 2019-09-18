@@ -20,7 +20,14 @@ namespace Itse1430.MovieLib.Host
         {
             var form = new MovieForm ();
 
-            form.ShowDialog ();
+            // Modeless - does not block main windows
+            //form.Show();
+            //// show the new movie form modally
+            if (form.ShowDialog(this) == DialogResult.OK)
+                // true save it
+                _movie = form.Movie;
         }
+
+        private Movie _movie;
     }
 }
