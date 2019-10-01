@@ -11,6 +11,11 @@ namespace Itse1430.MovieLib
     {
         #region Properties
 
+        public override string ToString ()
+        {
+            return $"{Title} ({ReleaseYear})";
+        }
+
         //Properties expose data of class as needed
         //Can be backed by fields but not required
         //Can be read, written or both - up to developer
