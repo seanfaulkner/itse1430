@@ -188,5 +188,10 @@ namespace Itse1430.MovieLib.Host
         }
 
         private Movie[] _movies = new Movie[100];
+
+        private void HelpToolStripMenuItem_Click ( object sender, EventArgs e )
+        {
+
+        }
     }
 }

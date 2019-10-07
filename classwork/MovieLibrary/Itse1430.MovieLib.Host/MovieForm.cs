@@ -132,5 +132,10 @@ namespace Itse1430.MovieLib.Host
             if (value < 0)
                 e.Cancel = true;
         }
+
+        private void MovieForm_Load ( object sender, EventArgs e )
+        {
+
+        }
     }
 }
