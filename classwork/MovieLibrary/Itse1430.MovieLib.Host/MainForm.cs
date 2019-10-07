@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Windows.Forms;
 
 namespace Itse1430.MovieLib.Host
@@ -25,42 +26,41 @@ namespace Itse1430.MovieLib.Host
 
             //Show the new movie form modally
             if (form.ShowDialog (this) == DialogResult.OK)
+            {
                 AddMovie (form.Movie);
-            UpdateUI ();
+                UpdateUI ();
+            };
         }
-  
 
         private Movie GetSelectedMovie ()
         {
+            //return _lstMovies.SelectedItem as Movie;
             var item = _lstMovies.SelectedItem;
-            if (item == null)
-                return null;
+            //if (item == null)
+            //    return null;
 
-            // Movie or null
+            //Movie or null
             return item as Movie;
 
-            //OR 
-            // return _lstMovies.SelectedItem as Movie;
-
-            //// Other approaches
-            //// C-style cast
+            ////Other approaches
+            ////C-style cast
             //(Movie)item;
 
-            //// old approach 1
+            ////Old approach 1
             //var tempVar = item as Movie;
-            //if(tempVar != null)
+            //if (tempVar != null)
             //{
             //};
 
-            //// Old approach 2
+            ////Old approach 2
             //if (item is Movie)
             //{
             //    var i = (Movie)item;
-            //    //do something with movie
+            //    //Do something with movie
             //}
 
-            //// Pattern matching
-            //if(item is Movie movie)
+            ////Pattern matching
+            //if (item is Movie movie)
             //{
             //};
         }
@@ -77,9 +77,9 @@ namespace Itse1430.MovieLib.Host
 
             if (form.ShowDialog (this) == DialogResult.OK)
             {
-                // TODO: Change to update
+                //TODO: Change to update
                 RemoveMovie (movie);
-               // RemoveMovie (form.Movie);
+                //RemoveMovie(form.Movie);
                 AddMovie (form.Movie);
                 UpdateUI ();
             };
@@ -87,24 +87,25 @@ namespace Itse1430.MovieLib.Host
 
         private void OnMovieDelete ( object sender, EventArgs e )
         {
-            //Demo
-            var menuItem = sender as Button;
-            //This will crash if menuItem is null
-            //var text = menuItem.Text;
+            #region Playing with null
+            //var menuItem = sender as Button;
+            ////This will crash if menuItem is null
+            ////var text = menuItem.Text;
 
-            //Handle null - as statement
-            var text = "";
-            if (menuItem != null)
-                text = menuItem.Text;
-            else
-                text = "";
+            ////Handle null - as statement
+            //var text = "";
+            //if (menuItem != null)
+            //    text = menuItem.Text;
+            //else
+            //    text = "";
 
-            //As expression
-            var text2 = (menuItem != null) ? menuItem.Text : "";
+            ////As expression
+            //var text2 = (menuItem != null) ? menuItem.Text : "";
 
-            //Null coalescing menuItem ?? "";
-            //Null conditional operator
-            var text3 = menuItem?.Text ?? "";
+            ////Null coalescing menuItem ?? "";
+            ////Null conditional operator
+            //var text3 = menuItem?.Text ?? "";
+            #endregion
 
             var movie = GetSelectedMovie ();
             if (movie == null)
@@ -132,24 +133,24 @@ namespace Itse1430.MovieLib.Host
             form.ShowDialog (this);
         }
 
-        private void UpdateUI()
+        private void UpdateUI ()
         {
             var movies = GetMovies ();
 
-            // Programmatic approach
-            // _lstMovies.Items.Clear ();
-            // _lstMovies.Items.AddRange (movies);
-                        
-            // For more complex bindings
+            //Programmatic approach
+            //_lstMovies.Items.Clear();
+            //_lstMovies.Items.AddRange(movies);
+
+            //For more complex bindings
             _lstMovies.DataSource = movies;
         }
 
-        private void AddMovie(Movie movie)
+        private void AddMovie ( Movie movie )
         {
-            // add to array
-            for(var index = 0; index < _movies.Length; ++index)
+            //Add to array
+            for (var index = 0; index < _movies.Length; ++index)
             {
-                if(_movies[index] == null)
+                if (_movies[index] == null)
                 {
                     _movies[index] = movie;
                     return;
@@ -157,22 +158,23 @@ namespace Itse1430.MovieLib.Host
             };
         }
 
-        private void RemoveMovie (Movie movie)
+        private void RemoveMovie ( Movie movie )
         {
-            // Remove from array
+            //Remove from array
             for (var index = 0; index < _movies.Length; ++index)
             {
-                // This wont work
-                if(_movies[index] == movie)
+                //This won't work
+                if (_movies[index] == movie)
                 {
                     _movies[index] = null;
                     return;
                 };
             };
         }
-        private Movie[] GetMovies()
+
+        private Movie[] GetMovies ()
         {
-            // TODO Filter out empty movies
+            //Filter out empty movies
             var count = 0;
             foreach (var movie in _movies)
                 if (movie != null)
@@ -188,10 +190,5 @@ namespace Itse1430.MovieLib.Host
         }
 
         private Movie[] _movies = new Movie[100];
-
-        private void HelpToolStripMenuItem_Click ( object sender, EventArgs e )
-        {
-
-        }
     }
 }
