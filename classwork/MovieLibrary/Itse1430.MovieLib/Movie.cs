@@ -20,6 +20,8 @@ namespace Itse1430.MovieLib
         //Can be backed by fields but not required
         //Can be read, written or both - up to developer
 
+            public int Id { get; set; }
+
         /// <summary>Gets or sets the title of the movie.</summary>
         public string Title
         {
