@@ -12,9 +12,12 @@ namespace CharacterCreator
 {
     public partial class MainForm : Form
     {
+
+        public List<Character> characterarray = new List<Character> ();
         public MainForm ()
         {
             InitializeComponent ();
+            
         }
 
         private void ExitToolStripMenuItem_Click ( object sender, EventArgs e )
@@ -33,5 +36,12 @@ namespace CharacterCreator
             var form = new NewCharForm ();
             form.ShowDialog (this);
         }
+
+        private void ListBox1_SelectedIndexChanged ( object sender, EventArgs e )
+        {
+
+        }
+
+        
     }
 }
