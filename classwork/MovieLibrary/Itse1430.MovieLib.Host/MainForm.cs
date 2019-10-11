@@ -144,5 +144,15 @@ namespace Itse1430.MovieLib.Host
         }
 
         private MovieDatabase _movies = new MovieDatabase ();
+
+        private void MainForm_Load ( object sender, EventArgs e )
+        {
+
+        }
+
+        private void _lstMovies_SelectedIndexChanged ( object sender, EventArgs e )
+        {
+
+        }
     }
 }

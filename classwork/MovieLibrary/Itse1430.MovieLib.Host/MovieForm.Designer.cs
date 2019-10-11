@@ -62,17 +62,18 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this._txtName.Location = new System.Drawing.Point(84, 34);
-            this._txtName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this._txtName.Margin = new System.Windows.Forms.Padding(2);
             this._txtName.Name = "_txtName";
             this._txtName.Size = new System.Drawing.Size(392, 20);
             this._txtName.TabIndex = 0;
+            this._txtName.TextChanged += new System.EventHandler(this._txtName_TextChanged);
             this._txtName.Validating += new System.ComponentModel.CancelEventHandler(this.OnValidatingName);
             // 
             // chkHasSeen
             // 
             this.chkHasSeen.AutoSize = true;
             this.chkHasSeen.Location = new System.Drawing.Point(84, 127);
-            this.chkHasSeen.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.chkHasSeen.Margin = new System.Windows.Forms.Padding(2);
             this.chkHasSeen.Name = "chkHasSeen";
             this.chkHasSeen.Size = new System.Drawing.Size(79, 17);
             this.chkHasSeen.TabIndex = 4;
@@ -92,7 +93,7 @@
             // _txtReleaseYear
             // 
             this._txtReleaseYear.Location = new System.Drawing.Point(84, 57);
-            this._txtReleaseYear.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this._txtReleaseYear.Margin = new System.Windows.Forms.Padding(2);
             this._txtReleaseYear.Name = "_txtReleaseYear";
             this._txtReleaseYear.Size = new System.Drawing.Size(76, 20);
             this._txtReleaseYear.TabIndex = 1;
@@ -134,7 +135,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtDescription.Location = new System.Drawing.Point(261, 80);
-            this.txtDescription.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtDescription.Margin = new System.Windows.Forms.Padding(2);
             this.txtDescription.Multiline = true;
             this.txtDescription.Name = "txtDescription";
             this.txtDescription.Size = new System.Drawing.Size(215, 155);
@@ -149,7 +150,7 @@
             "PG-13",
             "R"});
             this.cbRating.Location = new System.Drawing.Point(84, 80);
-            this.cbRating.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbRating.Margin = new System.Windows.Forms.Padding(2);
             this.cbRating.Name = "cbRating";
             this.cbRating.Size = new System.Drawing.Size(92, 21);
             this.cbRating.TabIndex = 2;
@@ -159,7 +160,7 @@
             // 
             this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSave.Location = new System.Drawing.Point(358, 258);
-            this.btnSave.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(2);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(56, 19);
             this.btnSave.TabIndex = 6;
@@ -172,7 +173,7 @@
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCancel.CausesValidation = false;
             this.btnCancel.Location = new System.Drawing.Point(418, 258);
-            this.btnCancel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(2);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(56, 19);
             this.btnCancel.TabIndex = 7;
@@ -183,7 +184,7 @@
             // _txtRunLength
             // 
             this._txtRunLength.Location = new System.Drawing.Point(84, 104);
-            this._txtRunLength.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this._txtRunLength.Margin = new System.Windows.Forms.Padding(2);
             this._txtRunLength.Name = "_txtRunLength";
             this._txtRunLength.Size = new System.Drawing.Size(76, 20);
             this._txtRunLength.TabIndex = 3;
@@ -213,7 +214,7 @@
             this.Controls.Add(this.chkHasSeen);
             this.Controls.Add(this._txtName);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(679, 414);
             this.MinimizeBox = false;
