@@ -13,7 +13,11 @@ namespace CharacterCreator
     public partial class MainForm : Form
     {
 
-        public List<Character> characterarray = new List<Character> ();
+        // Array
+        private Character[] _characters = new Character[100];
+
+        public List<Character> character = new List<Character> ();
+        public Character Character { get; set; }
         public MainForm ()
         {
             InitializeComponent ();
@@ -35,13 +39,50 @@ namespace CharacterCreator
         {         
             var form = new NewCharForm ();
             form.ShowDialog (this);
-        }
+            form.Close ();
+        }        
 
-        private void ListBox1_SelectedIndexChanged ( object sender, EventArgs e )
+        public Character Add ( Character character ) // https://stackoverflow.com/questions/25137498/display-specified-text-for-listbox-items i think this listBox1 
         {
+            ////Add to array
+            for (var index = 0; index < _characters.Length; ++index)
+            {
+                if (_characters[index] == null)
+                {
+                    _characters[index] = character;                    
+                    return character;
+                }
+            };
+            return character;
+        }
+        private void ListBox1_SelectedIndexChanged ( object sender, EventArgs e ) //nope
+        {
+            GetAll();
+        }
+        public Character[] GetAll ()
+        {
+            ////Filter out empty characters
+            //var count = 0;
+            //foreach (var character in _characters)
+            //    if (character != null)
+            //        ++count;
 
+            var index = 0;
+            var characters = new Character[_characters.Length];
+            foreach (var character in _characters)
+                if (character != null)
+                    characters[index++] = character;
+
+
+
+            listBox1.Items.Clear ();
+            listBox1.Items.AddRange (_characters.ToArray ());
+            listBox1.Items.Add (_characters.ToArray ());
+            listBox1.Show ();           //DisplayMember = "name";
+            //still got nothin, idk where this statement goes, i feel like its not adding to the array for some reason
+
+            return characters;
         }
 
-        
     }
 }

@@ -58,9 +58,11 @@
             // 
             // Name
             // 
+            this.Name.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.Name.Location = new System.Drawing.Point(81, 69);
             this.Name.Name = "Name";
-            this.Name.Size = new System.Drawing.Size(155, 20);
+            this.Name.Size = new System.Drawing.Size(480, 20);
             this.Name.TabIndex = 0;
             this.Name.TextChanged += new System.EventHandler(this.Name_TextChanged);
             // 
@@ -103,7 +105,7 @@
             // labelDescription
             // 
             this.labelDescription.AutoSize = true;
-            this.labelDescription.Location = new System.Drawing.Point(324, 40);
+            this.labelDescription.Location = new System.Drawing.Point(267, 110);
             this.labelDescription.Name = "labelDescription";
             this.labelDescription.Size = new System.Drawing.Size(60, 13);
             this.labelDescription.TabIndex = 8;
@@ -111,17 +113,21 @@
             // 
             // Description
             // 
-            this.Description.Location = new System.Drawing.Point(327, 56);
+            this.Description.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.Description.Location = new System.Drawing.Point(270, 135);
             this.Description.Multiline = true;
             this.Description.Name = "Description";
-            this.Description.Size = new System.Drawing.Size(291, 156);
+            this.Description.Size = new System.Drawing.Size(285, 156);
             this.Description.TabIndex = 9;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(543, 230);
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button1.Location = new System.Drawing.Point(449, 300);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.Size = new System.Drawing.Size(69, 23);
             this.button1.TabIndex = 10;
             this.button1.Text = "Save";
             this.button1.UseVisualStyleBackColor = true;
@@ -263,9 +269,10 @@
             // 
             // Cancel
             // 
-            this.Cancel.Location = new System.Drawing.Point(401, 229);
+            this.Cancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.Cancel.Location = new System.Drawing.Point(327, 300);
             this.Cancel.Name = "Cancel";
-            this.Cancel.Size = new System.Drawing.Size(75, 23);
+            this.Cancel.Size = new System.Drawing.Size(69, 23);
             this.Cancel.TabIndex = 23;
             this.Cancel.Text = "Cancel";
             this.Cancel.UseVisualStyleBackColor = true;
@@ -275,7 +282,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(574, 346);
             this.Controls.Add(this.Cancel);
             this.Controls.Add(this.Charisma);
             this.Controls.Add(this.Constitution);
@@ -297,6 +304,7 @@
             this.Controls.Add(this.labelProfession);
             this.Controls.Add(this.labelName);
             this.Controls.Add(this.Name);
+            this.MinimumSize = new System.Drawing.Size(590, 385);
             this.Text = "Create New Character";
             ((System.ComponentModel.ISupportInitialize)(this.Strength)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Intelligence)).EndInit();

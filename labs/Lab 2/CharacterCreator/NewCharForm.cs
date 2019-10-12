@@ -12,8 +12,6 @@ namespace CharacterCreator
 {
     public partial class NewCharForm : Form
     {
-        private Character[] _characters = new Character[100];
-
 
         string name, profession, race, description;
         decimal attributes, strength, intelligence, agility, constitution, charisma;
@@ -65,10 +63,11 @@ namespace CharacterCreator
             }
             else
             {
-                List<Character>characterarray.Add(name, profession, race, description, strength, intelligence, agility, constitution, charisma);
+                
+                //List<Character>characterarray.Add(name, profession, race, description, strength, intelligence, agility, constitution, charisma);
                 DialogResult = DialogResult.OK;
                 Close();
             }
-        } // end of save button       
+        } // end of save button               
     }
 }
