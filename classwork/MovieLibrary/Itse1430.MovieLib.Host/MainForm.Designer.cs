@@ -137,7 +137,6 @@
             this._lstMovies.Name = "_lstMovies";
             this._lstMovies.Size = new System.Drawing.Size(505, 242);
             this._lstMovies.TabIndex = 1;
-            this._lstMovies.SelectedIndexChanged += new System.EventHandler(this._lstMovies_SelectedIndexChanged);
             // 
             // MainForm
             // 
@@ -151,7 +150,6 @@
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "MainForm";
             this.Text = "Movie Library";
-            this.Load += new System.EventHandler(this.MainForm_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);

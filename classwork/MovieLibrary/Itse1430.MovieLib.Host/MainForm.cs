@@ -10,11 +10,13 @@ namespace Itse1430.MovieLib.Host
         public MainForm ()
         {
             InitializeComponent ();
+        }
 
-            //Itse1430.MovieLib.Movie
-            Movie movie = new Movie ();
-            movie.Title = "Jaws";
-            movie.Description = movie.Title;
+        protected override void OnLoad ( EventArgs e )
+        {
+            base.OnLoad (e);
+
+            UpdateUI ();
         }
 
         //Called when Movie\Add selected
@@ -135,6 +137,9 @@ namespace Itse1430.MovieLib.Host
         {
             var movies = _movies.GetAll ();
 
+            //var movie = movies[0];
+            //movie.Title = "Bob";
+
             //Programmatic approach
             //_lstMovies.Items.Clear();
             //_lstMovies.Items.AddRange(movies);
@@ -144,15 +149,5 @@ namespace Itse1430.MovieLib.Host
         }
 
         private MovieDatabase _movies = new MovieDatabase ();
-
-        private void MainForm_Load ( object sender, EventArgs e )
-        {
-
-        }
-
-        private void _lstMovies_SelectedIndexChanged ( object sender, EventArgs e )
-        {
-
-        }
     }
 }
