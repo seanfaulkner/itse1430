@@ -66,7 +66,6 @@
             this._txtName.Name = "_txtName";
             this._txtName.Size = new System.Drawing.Size(392, 20);
             this._txtName.TabIndex = 0;
-            this._txtName.TextChanged += new System.EventHandler(this._txtName_TextChanged);
             this._txtName.Validating += new System.ComponentModel.CancelEventHandler(this.OnValidatingName);
             // 
             // chkHasSeen
@@ -224,7 +223,6 @@
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Movie Details";
-            this.Load += new System.EventHandler(this.MovieForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this._errors)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

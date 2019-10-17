@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Data;
 using System.Drawing;
 using System.Linq;
@@ -12,11 +13,15 @@ namespace Itse1430.MovieLib.Host
 {
     public partial class MovieForm : Form
     {
-        // Base constructor is always called unless specified
-        public MovieForm () // : base()
-        {            
+        //Base ctor is always called unless ctor chaining is used
+        public MovieForm () //: base()
+        {
+            //Don't need an init method when ctor chaining is available
+            //Init();
             InitializeComponent ();
         }
+
+        //private void Init () { }
 
         // Call default ctor first
         public MovieForm ( string title ) : this ()
@@ -33,6 +38,8 @@ namespace Itse1430.MovieLib.Host
 
         protected override void OnLoad ( EventArgs e )
         {
+            ///Init();
+
             //Call base type
             //OnLoad(e);
             base.OnLoad (e);
@@ -54,7 +61,8 @@ namespace Itse1430.MovieLib.Host
         {
             if (!ValidateChildren ())
                 return;
-            // Object initializer syntax
+
+            //Object initializer syntax
             var movie = new Movie () {
                 Title = _txtName.Text,
                 Description = txtDescription.Text,
@@ -65,20 +73,33 @@ namespace Itse1430.MovieLib.Host
             };
 
             //Validate
-            var message = movie.Validate ();
-            if (!String.IsNullOrEmpty (message))
-            {
-                MessageBox.Show (this, message,
-                                "Error", MessageBoxButtons.OK,
-                                MessageBoxIcon.Error);
+            if (!Validate (movie))
                 return;
-            };
 
             //TODO: Save it
             Movie = movie;
 
             DialogResult = DialogResult.OK;
             Close ();
+        }
+
+        private bool Validate ( IValidatableObject movie )
+        {
+            var validator = new ObjectValidator ();
+            var results = validator.TryValidateObject (movie);
+            if (results.Count () > 0)
+            {
+                //if (!String.IsNullOrEmpty(message))
+                foreach (var result in results)
+                {
+                    MessageBox.Show (this, result.ErrorMessage,
+                                    "Error", MessageBoxButtons.OK,
+                                    MessageBoxIcon.Error);
+                };
+                return false;
+            };
+
+            return true;
         }
 
         private int GetAsInt32 ( TextBox control )
@@ -115,7 +136,7 @@ namespace Itse1430.MovieLib.Host
             var control = sender as ComboBox;
 
             //Text is required
-            if (control.SelectedIndex == -1)
+            if (control.SelectedIndex <= 0)
             {
                 e.Cancel = true;
                 _errors.SetError (control, "Rating is required");
@@ -153,16 +174,6 @@ namespace Itse1430.MovieLib.Host
             {
                 _errors.SetError (control, "");
             }
-        }
-
-        private void _txtName_TextChanged ( object sender, EventArgs e )
-        {
-
-        }
-
-        private void MovieForm_Load ( object sender, EventArgs e )
-        {
-
         }
     }
 }

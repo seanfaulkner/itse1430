@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -7,20 +8,15 @@ using System.Threading.Tasks;
 namespace Itse1430.MovieLib
 {
     /// <summary>Represents movie data.</summary>
-    public class Movie
+    public class Movie : IValidatableObject
     {
         #region Properties
-
-        public override string ToString ()
-        {
-            return $"{Title} ({ReleaseYear})";
-        }
 
         //Properties expose data of class as needed
         //Can be backed by fields but not required
         //Can be read, written or both - up to developer
 
-            public int Id { get; set; }
+        public int Id { get; set; }
 
         /// <summary>Gets or sets the title of the movie.</summary>
         public string Title
@@ -68,10 +64,10 @@ namespace Itse1430.MovieLib
         //    set { _hasSeen = value; }
         //}
 
-        // Value is 1939, read only, public
+        //Value is 1939, read only, public
         //public int ReleaseYearForColor { get; } = 1939;
 
-            // constant field
+        //Constant field
         public const int ReleaseYearForColor = 1939;
         //public readonly int ReleaseYearForColor = 1939;
 
@@ -97,30 +93,60 @@ namespace Itse1430.MovieLib
         }
         #endregion
 
+        public override string ToString ()
+        {
+            return $"{Title} ({ReleaseYear})";
+        }
+
         /// <summary>Validates the movie.</summary>
         /// <returns>An error message if validation fails or empty string otherwise.</returns>
-        public string Validate ()
+        //public string Validate ()
+        //{
+        //    //`this` is implicit first parameter, represents instance
+        //    //this.title == title
+
+        //    //Name is required
+        //    if (String.IsNullOrEmpty (this.Title))
+        //        return "Title is required";
+
+        //    //Release year >= 1900
+        //    if (ReleaseYear < 1900)
+        //        return "Release Year must be >= 1900";
+
+        //    //Run length >= 0
+        //    if (RunLength < 0)
+        //        return "Run Length must be >= 0";
+
+        //    //Rating is required
+        //    if (String.IsNullOrEmpty (Rating))
+        //        return "Rating is required";
+
+        //    return "";
+        //}
+
+        public IEnumerable<ValidationResult> Validate ( ValidationContext validationContext )
         {
-            //`this` is implicit first parameter, represents instance
-            //this.title == title
+            // Iterator syntax
+            //var results = new List<ValidationResult> ();
 
             //Name is required
-            if (String.IsNullOrEmpty (this.Title))
-                return "Title is required";
+            if (String.IsNullOrEmpty (Title))
+                //results.Add (new ValidationResult ("Title is required"));
+                yield return new ValidationResult("Title is required");
 
             //Release year >= 1900
             if (ReleaseYear < 1900)
-                return "Release Year must be >= 1900";
+                yield return new ValidationResult ("Release Year must be >= 1900");
 
             //Run length >= 0
             if (RunLength < 0)
-                return "Run Length must be >= 0";
+                yield return new ValidationResult ("Run Length must be >= 0");
 
             //Rating is required
             if (String.IsNullOrEmpty (Rating))
-                return "Rating is required";
+                yield return new ValidationResult ("Rating is required");
 
-            return "";
+            //return results;
         }
 
         #region Private Members
