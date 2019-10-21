@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace Itse1430.MovieLib.Host
@@ -145,9 +146,15 @@ namespace Itse1430.MovieLib.Host
             //_lstMovies.Items.AddRange(movies);
 
             //For more complex bindings
-            _lstMovies.DataSource = movies;
+            
+            _lstMovies.DataSource = movies.ToArray();
         }
 
-        private MovieDatabase _movies = new MovieDatabase ();
+        private IMovieDatabase _movies = new MovieDatabase ();
+
+        private void MainForm_Load ( object sender, EventArgs e )
+        {
+
+        }
     }
 }

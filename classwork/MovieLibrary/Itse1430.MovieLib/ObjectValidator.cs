@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace Itse1430.MovieLib
 {
-    public class ObjectValidator
+    public static class ObjectValidator
     {
-        public IEnumerable<ValidationResult> TryValidateObject ( IValidatableObject value )
+        public static IEnumerable<ValidationResult> TryValidateObject ( IValidatableObject value )
         {
             var results = new List<ValidationResult> ();
 
