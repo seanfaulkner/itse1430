@@ -71,10 +71,10 @@ namespace Itse1430.MovieLib
             if (existing != null && existing.Id != id)
                 return;
 
-             UpdateCore (existing, newMovie);
+             UpdateCore (id, newMovie);
         }
 
-        protected abstract Movie UpdateCore ( Movie current, Movie newMovie );
+        protected abstract Movie UpdateCore ( int id, Movie newMovie );
 
 
         /// <summary>Add a movie to database.</summary>

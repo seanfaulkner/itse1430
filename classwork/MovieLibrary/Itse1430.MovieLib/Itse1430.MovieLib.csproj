@@ -46,6 +46,7 @@
     <Compile Include="MemoryMovieDatabase.cs" />
     <Compile Include="MovieDatabase.cs" />
     <Compile Include="Movie.cs" />
+    <Compile Include="MovieDatabaseExtensions.cs" />
     <Compile Include="ObjectValidator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

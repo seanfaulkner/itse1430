@@ -17,6 +17,12 @@ namespace Itse1430.MovieLib.Host
         {
             base.OnLoad (e);
 
+           // Seed movies 
+            _movies = new MemoryMovieDatabase ();
+            var count = _movies.GetAll ().Count ();
+            if (count == 0)
+                MovieDatabaseExtensions.seed (_movies);
+
             UpdateUI ();
         }
 
@@ -150,7 +156,7 @@ namespace Itse1430.MovieLib.Host
             _lstMovies.DataSource = movies.ToArray();
         }
 
-        private IMovieDatabase _movies = new MovieDatabase ();
+        private IMovieDatabase _movies;
 
         private void MainForm_Load ( object sender, EventArgs e )
         {
