@@ -174,5 +174,10 @@ namespace Itse1430.MovieLib.Host
                 _errors.SetError (control, "");
             }
         }
+
+        private void _txtName_TextChanged ( object sender, EventArgs e )
+        {
+
+        }
     }
 }

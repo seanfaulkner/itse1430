@@ -21,7 +21,8 @@ namespace Itse1430.MovieLib.Host
             _movies = new MemoryMovieDatabase ();
             var count = _movies.GetAll ().Count ();
             if (count == 0)
-                MovieDatabaseExtensions.seed (_movies);
+                // MovieDatabaseExtensions.Seed (_movies);
+                _movies.Seed ();
 
             UpdateUI ();
         }
@@ -51,6 +52,10 @@ namespace Itse1430.MovieLib.Host
 
             //Movie or null
             return item as Movie;
+
+            //var firstMovie = _lstMovies.SelectedItems
+            //                           .OfType<Movie> ()
+            //                           .FirstOrDefault ();
 
             ////Other approaches
             ////C-style cast
@@ -140,9 +145,25 @@ namespace Itse1430.MovieLib.Host
             form.ShowDialog (this);
         }
 
+        //private string OrderByTitle(Movie movie)
+        //{
+        //    return movie.Title;
+        //}
+
+        //private int OrderByReleaseYear (Movie movie)
+        //{
+        //    return movie.ReleaseYear;
+        //}
+
         private void UpdateUI ()
         {
-            var movies = _movies.GetAll ();
+            var movies = _movies.GetAll ()
+                              //.OrderBy (OrderByTitle)
+                                .OrderBy (m => m.Title)
+                              //.ThenBy (OrderByReleaseYear);
+                                .ThenBy (m => m.ReleaseYear);
+
+            PlayWithEnumerable (movies);
 
             //var movie = movies[0];
             //movie.Title = "Bob";
@@ -152,8 +173,30 @@ namespace Itse1430.MovieLib.Host
             //_lstMovies.Items.AddRange(movies);
 
             //For more complex bindings
-            
             _lstMovies.DataSource = movies.ToArray();
+        }
+
+        private void PlayWithEnumerable ( IEnumerable<Movie> movies )
+        {
+            Movie firstOne = movies.FirstOrDefault ();
+            Movie lastOne = movies.LastOrDefault ();
+            //Movie onlyOne = movies.SingleOrDefault ();
+
+            //var coolMovies = movies.Where (m => m.ReleaseYear > 1979 && m.ReleaseYear < 2000);
+            int id = 1;
+            //var otherMovies = movies.Where(m => m.Id > ++id);
+            var temp1 = new NestedType { id = id };
+            var otherMovies = movies.Where (temp1.WhereCondition);
+            var lastId = id;
+        }
+
+        private sealed class NestedType
+        {
+            public int id { get; set; }
+            public bool WhereCondition ( Movie m )
+            {
+                return m.Id > ++id;
+            }
         }
 
         private IMovieDatabase _movies;
