@@ -12,16 +12,17 @@ namespace CharacterCreator
 {
     public partial class MainForm : Form
     {
-
-        // Array
-        private Character[] _characters = new Character[100];
-
-        public List<Character> character = new List<Character> ();
-        public Character Character { get; set; }
         public MainForm ()
         {
             InitializeComponent ();
             
+        }
+
+        protected override void OnLoad (EventArgs e)
+        {
+            base.OnLoad (e);
+
+            //
         }
 
         private void ExitToolStripMenuItem_Click ( object sender, EventArgs e )
@@ -75,14 +76,16 @@ namespace CharacterCreator
 
 
 
-            listBox1.Items.Clear ();
-            listBox1.Items.AddRange (_characters.ToArray ());
-            listBox1.Items.Add (_characters.ToArray ());
-            listBox1.Show ();           //DisplayMember = "name";
+            _lstCharacter.Items.Clear ();
+            _lstCharacter.Items.AddRange (_characters.ToArray ());
+            _lstCharacter.Items.Add (_characters.ToArray ());
+            _lstCharacter.Show ();           //DisplayMember = "name";
             //still got nothin, idk where this statement goes, i feel like its not adding to the array for some reason
 
             return characters;
         }
+
+        private List<Character> _characters = new List<Movie> ();
 
     }
 }
