@@ -17,11 +17,11 @@ namespace Itse1430.MovieLib.Host
         {
             base.OnLoad (e);
 
-           // Seed movies 
+            //Seed movies
             _movies = new MemoryMovieDatabase ();
             var count = _movies.GetAll ().Count ();
             if (count == 0)
-                // MovieDatabaseExtensions.Seed (_movies);
+                //MovieDatabaseExtensions.Seed(_movies);
                 _movies.Seed ();
 
             UpdateUI ();
@@ -54,9 +54,10 @@ namespace Itse1430.MovieLib.Host
             return item as Movie;
 
             //var firstMovie = _lstMovies.SelectedItems
-            //                           .OfType<Movie> ()
-            //                           .FirstOrDefault ();
+            //                           .OfType<Movie>()
+            //                           .FirstOrDefault();
 
+            #region Typecasting Demo
             ////Other approaches
             ////C-style cast
             //(Movie)item;
@@ -78,6 +79,7 @@ namespace Itse1430.MovieLib.Host
             //if (item is Movie movie)
             //{
             //};
+            #endregion
         }
 
         private void OnMovieEdit ( object sender, EventArgs e )
@@ -145,49 +147,53 @@ namespace Itse1430.MovieLib.Host
             form.ShowDialog (this);
         }
 
-        //private string OrderByTitle(Movie movie)
+        //Use lambdas for one off methods
+        //private string OrderByTitle ( Movie movie )
         //{
         //    return movie.Title;
         //}
-
-        //private int OrderByReleaseYear (Movie movie)
+        //private int OrderByReleaseYear ( Movie movie )
         //{
         //    return movie.ReleaseYear;
         //}
 
         private void UpdateUI ()
         {
-            var movies = _movies.GetAll ()
-                              //.OrderBy (OrderByTitle)
-                                .OrderBy (m => m.Title)
-                              //.ThenBy (OrderByReleaseYear);
-                                .ThenBy (m => m.ReleaseYear);
+            var movies = from m in _movies.GetAll ()
+                         orderby m.Title, m.ReleaseYear
+                         select m;
+            //var movies = _movies.GetAll()
+            //                    .OrderBy(m => m.Title)
+            //                    .ThenBy(m => m.ReleaseYear);
+            //.OrderBy(OrderByTitle)
+            //.ThenBy(OrderByReleaseYear);
 
             PlayWithEnumerable (movies);
-
-            //var movie = movies[0];
-            //movie.Title = "Bob";
 
             //Programmatic approach
             //_lstMovies.Items.Clear();
             //_lstMovies.Items.AddRange(movies);
 
-            //For more complex bindings
-            _lstMovies.DataSource = movies.ToArray();
+            //For more complex bindings                                                
+            _lstMovies.DataSource = movies.ToArray ();
         }
 
         private void PlayWithEnumerable ( IEnumerable<Movie> movies )
         {
             Movie firstOne = movies.FirstOrDefault ();
             Movie lastOne = movies.LastOrDefault ();
-            //Movie onlyOne = movies.SingleOrDefault ();
+            //Movie onlyOne = movies.SingleOrDefault();
 
-            //var coolMovies = movies.Where (m => m.ReleaseYear > 1979 && m.ReleaseYear < 2000);
+            //var coolMovies = movies.Where(m => m.ReleaseYear > 1979
+            //                                    && m.ReleaseYear < 2000);
+
             int id = 1;
-            //var otherMovies = movies.Where(m => m.Id > ++id);
-            var temp1 = new NestedType { id = id };
-            var otherMovies = movies.Where (temp1.WhereCondition);
-            var lastId = id;
+            var otherMovies = movies.Where (m => m.Id > ++id);
+
+            //The actual generated code...
+            //var temp1 = new NestedType { id = id };
+            //var otherMovies = movies.Where(temp1.WhereCondition);
+            //var lastId = id;
         }
 
         private sealed class NestedType
@@ -200,10 +206,5 @@ namespace Itse1430.MovieLib.Host
         }
 
         private IMovieDatabase _movies;
-
-        private void MainForm_Load ( object sender, EventArgs e )
-        {
-
-        }
     }
 }
