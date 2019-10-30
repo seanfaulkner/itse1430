@@ -73,7 +73,7 @@ namespace Itse1430.MovieLib
         {
             var existing = FindMovie (id);
             if (existing == null)
-                throw new FileNotFoundException ();
+                throw new IOException ("Movie not found");
 
             //Update existing movie
             newMovie.Id = id;
