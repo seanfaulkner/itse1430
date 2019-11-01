@@ -81,6 +81,9 @@ namespace CharacterCreator
             _lstCharacter.Items.Add (_characters.ToArray ());
             _lstCharacter.Show ();           //DisplayMember = "name";
             //still got nothin, idk where this statement goes, i feel like its not adding to the array for some reason
+            //do we have it named right?
+            // _characters is the array and character is an instance of Character even when i take the list away from the top it still doesnt display
+            //try to do a message box for the array to make sure after we set it, that it's correct. how do i do that?
 
             return characters;
         }
