@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.Configuration;
 using System.Linq;
 using System.Windows.Forms;
 using Itse1430.MovieLib.IO;
+using Itse1430.MovieLib.SqlServer;
 
 namespace Itse1430.MovieLib.Host
 {
@@ -20,11 +22,12 @@ namespace Itse1430.MovieLib.Host
             base.OnLoad (e);
 
             //Seed movies
-            _movies = new FileMovieDatabase(@"movies.csv");
-            var count = _movies.GetAll ().Count ();
-            if (count == 0)
-                //MovieDatabaseExtensions.Seed(_movies);
-                _movies.Seed ();
+            var connString = ConfigurationManager.ConnectionStrings["MovieDatabase"];
+            //_movies = new FileMovieDatabase(@"movies.csv");
+            _movies = new SqlMovieDatabase (connString.ConnectionString);
+            //var count = _movies.GetAll().Count();
+            //if (count == 0)
+            //    _movies.Seed();
 
             UpdateUI ();
         }
@@ -57,8 +60,8 @@ namespace Itse1430.MovieLib.Host
                                     MessageBoxButtons.OK,
                                     MessageBoxIcon.Error);
 
-                    //throw;          // rethrow existing exception
-                    //throw ex;       // throwing a new exception
+                    //throw;    //rethrow existing exception
+                    //throw ex; //throwing a new exception
                 };
             };
         }
@@ -112,10 +115,28 @@ namespace Itse1430.MovieLib.Host
             var form = new MovieForm ();
             form.Movie = movie;
 
-            if (form.ShowDialog (this) == DialogResult.OK)
+            if (form.ShowDialog (this) != DialogResult.OK)
+                return;
+
+            try
             {
                 _movies.Update (movie.Id, form.Movie);
                 UpdateUI ();
+            } catch (ArgumentException ex)
+            {
+                MessageBox.Show (ex.Message, "Error",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Error);
+            } catch (ValidationException ex)
+            {
+                MessageBox.Show (ex.Message, "Validation Error",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Error);
+            } catch
+            {
+                MessageBox.Show ("Save failed", "Error",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Error);
             };
         }
 
@@ -152,8 +173,14 @@ namespace Itse1430.MovieLib.Host
                 return;
 
             //Delete it
-            _movies.Remove (movie.Id);
-            UpdateUI ();
+            try
+            {
+                _movies.Remove (movie.Id);
+                UpdateUI ();
+            } catch (Exception ex)
+            {
+                MessageBox.Show ("Delete failed", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            };
         }
 
         private void OnFileExit ( object sender, EventArgs e )

@@ -80,11 +80,10 @@ namespace Itse1430.MovieLib.IO
                 {
                     var line = reader.ReadLine ();
                     var movie = LoadMovie (line);
-                    if (movie?.Id ==  id)
+                    if (movie?.Id == id)
                         return movie;
                 };
             };
-
             return null;
         }
 
