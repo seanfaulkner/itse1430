@@ -65,7 +65,6 @@
             // 
             // _txtName
             // 
-            this._errors.SetError(this._txtName, "Name required");
             this._txtName.Location = new System.Drawing.Point(53, 43);
             this._txtName.Name = "_txtName";
             this._txtName.Size = new System.Drawing.Size(483, 20);
@@ -183,7 +182,6 @@
             // 
             // cbProfession
             // 
-            this._errors.SetError(this.cbProfession, "Profession required");
             this.cbProfession.FormattingEnabled = true;
             this.cbProfession.Items.AddRange(new object[] {
             "Fighter",
@@ -199,7 +197,6 @@
             // 
             // cbRace
             // 
-            this._errors.SetError(this.cbRace, "Race required");
             this.cbRace.FormattingEnabled = true;
             this.cbRace.Items.AddRange(new object[] {
             "Dwarf",
@@ -215,7 +212,6 @@
             // 
             // _txtStrength
             // 
-            this._errors.SetError(this._txtStrength, "Must be between 0-100");
             this._txtStrength.Location = new System.Drawing.Point(74, 168);
             this._txtStrength.Name = "_txtStrength";
             this._txtStrength.Size = new System.Drawing.Size(100, 20);
@@ -225,7 +221,6 @@
             // 
             // _txtIntelligence
             // 
-            this._errors.SetError(this._txtIntelligence, "Must be between 0-100");
             this._txtIntelligence.Location = new System.Drawing.Point(74, 194);
             this._txtIntelligence.Name = "_txtIntelligence";
             this._txtIntelligence.Size = new System.Drawing.Size(100, 20);
@@ -235,7 +230,6 @@
             // 
             // _txtAgility
             // 
-            this._errors.SetError(this._txtAgility, "Must be between 0-100");
             this._txtAgility.Location = new System.Drawing.Point(74, 219);
             this._txtAgility.Name = "_txtAgility";
             this._txtAgility.Size = new System.Drawing.Size(100, 20);
@@ -245,7 +239,6 @@
             // 
             // _txtConstitution
             // 
-            this._errors.SetError(this._txtConstitution, "Must be between 0-100");
             this._txtConstitution.Location = new System.Drawing.Point(74, 242);
             this._txtConstitution.Name = "_txtConstitution";
             this._txtConstitution.Size = new System.Drawing.Size(100, 20);
@@ -255,7 +248,6 @@
             // 
             // _txtCharisma
             // 
-            this._errors.SetError(this._txtCharisma, "Must be between 0-100");
             this._txtCharisma.Location = new System.Drawing.Point(74, 265);
             this._txtCharisma.Name = "_txtCharisma";
             this._txtCharisma.Size = new System.Drawing.Size(100, 20);
