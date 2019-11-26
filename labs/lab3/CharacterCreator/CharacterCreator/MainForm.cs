@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Itse1430.CharacterLib;
 
 namespace CharacterCreator
 {
@@ -17,6 +18,6 @@ namespace CharacterCreator
             InitializeComponent ();
         }
 
-
+        private List<Character> _characters = new List<Character> ();
     }
 }

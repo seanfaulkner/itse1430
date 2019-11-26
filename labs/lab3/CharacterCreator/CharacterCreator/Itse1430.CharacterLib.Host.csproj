@@ -97,5 +97,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Itse1430.CharacterLib\Itse1430.CharacterLib.csproj">
+      <Project>{00e271bf-4f7e-4b6a-9817-51f35f0d990b}</Project>
+      <Name>Itse1430.CharacterLib</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
