@@ -50,12 +50,8 @@
             this._txtAgility = new System.Windows.Forms.TextBox();
             this._txtConstitution = new System.Windows.Forms.TextBox();
             this._txtCharisma = new System.Windows.Forms.TextBox();
-            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.errorProvider2 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.errorProvider3 = new System.Windows.Forms.ErrorProvider(this.components);
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider3)).BeginInit();
+            this._errors = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this._errors)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -69,11 +65,12 @@
             // 
             // _txtName
             // 
-            this.errorProvider1.SetError(this._txtName, "Name required");
+            this._errors.SetError(this._txtName, "Name required");
             this._txtName.Location = new System.Drawing.Point(53, 43);
             this._txtName.Name = "_txtName";
             this._txtName.Size = new System.Drawing.Size(483, 20);
             this._txtName.TabIndex = 1;
+            this._txtName.Validating += new System.ComponentModel.CancelEventHandler(this.OnValidatingName);
             // 
             // button1
             // 
@@ -83,6 +80,7 @@
             this.button1.TabIndex = 2;
             this.button1.Text = "Cancel";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.BtnCancel_Click);
             // 
             // button2
             // 
@@ -92,6 +90,7 @@
             this.button2.TabIndex = 3;
             this.button2.Text = "Save";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.OnSave);
             // 
             // label2
             // 
@@ -184,8 +183,7 @@
             // 
             // cbProfession
             // 
-            this.cbProfession.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.errorProvider2.SetError(this.cbProfession, "Profession required");
+            this._errors.SetError(this.cbProfession, "Profession required");
             this.cbProfession.FormattingEnabled = true;
             this.cbProfession.Items.AddRange(new object[] {
             "Fighter",
@@ -197,11 +195,11 @@
             this.cbProfession.Name = "cbProfession";
             this.cbProfession.Size = new System.Drawing.Size(156, 21);
             this.cbProfession.TabIndex = 14;
+            this.cbProfession.Validating += new System.ComponentModel.CancelEventHandler(this.OnValidatingProfession);
             // 
             // cbRace
             // 
-            this.cbRace.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.errorProvider3.SetError(this.cbRace, "Race required");
+            this._errors.SetError(this.cbRace, "Race required");
             this.cbRace.FormattingEnabled = true;
             this.cbRace.Items.AddRange(new object[] {
             "Dwarf",
@@ -213,66 +211,62 @@
             this.cbRace.Name = "cbRace";
             this.cbRace.Size = new System.Drawing.Size(156, 21);
             this.cbRace.TabIndex = 15;
+            this.cbRace.Validating += new System.ComponentModel.CancelEventHandler(this.OnValidatingRace);
             // 
             // _txtStrength
             // 
-            this.errorProvider1.SetError(this._txtStrength, "Must be between 0-100");
+            this._errors.SetError(this._txtStrength, "Must be between 0-100");
             this._txtStrength.Location = new System.Drawing.Point(74, 168);
             this._txtStrength.Name = "_txtStrength";
             this._txtStrength.Size = new System.Drawing.Size(100, 20);
             this._txtStrength.TabIndex = 16;
             this._txtStrength.Text = "50";
+            this._txtStrength.Validating += new System.ComponentModel.CancelEventHandler(this.OnValidatingStrength);
             // 
             // _txtIntelligence
             // 
-            this.errorProvider1.SetError(this._txtIntelligence, "Must be between 0-100");
+            this._errors.SetError(this._txtIntelligence, "Must be between 0-100");
             this._txtIntelligence.Location = new System.Drawing.Point(74, 194);
             this._txtIntelligence.Name = "_txtIntelligence";
             this._txtIntelligence.Size = new System.Drawing.Size(100, 20);
             this._txtIntelligence.TabIndex = 17;
             this._txtIntelligence.Text = "50";
+            this._txtIntelligence.Validating += new System.ComponentModel.CancelEventHandler(this.OnValidatingIntelligence);
             // 
             // _txtAgility
             // 
-            this.errorProvider1.SetError(this._txtAgility, "Must be between 0-100");
+            this._errors.SetError(this._txtAgility, "Must be between 0-100");
             this._txtAgility.Location = new System.Drawing.Point(74, 219);
             this._txtAgility.Name = "_txtAgility";
             this._txtAgility.Size = new System.Drawing.Size(100, 20);
             this._txtAgility.TabIndex = 18;
             this._txtAgility.Text = "50";
+            this._txtAgility.Validating += new System.ComponentModel.CancelEventHandler(this.OnValidatingAgility);
             // 
             // _txtConstitution
             // 
-            this.errorProvider1.SetError(this._txtConstitution, "Must be between 0-100");
+            this._errors.SetError(this._txtConstitution, "Must be between 0-100");
             this._txtConstitution.Location = new System.Drawing.Point(74, 242);
             this._txtConstitution.Name = "_txtConstitution";
             this._txtConstitution.Size = new System.Drawing.Size(100, 20);
             this._txtConstitution.TabIndex = 19;
             this._txtConstitution.Text = "50";
+            this._txtConstitution.Validating += new System.ComponentModel.CancelEventHandler(this.OnValidatingConstitution);
             // 
             // _txtCharisma
             // 
-            this.errorProvider1.SetError(this._txtCharisma, "Must be between 0-100");
+            this._errors.SetError(this._txtCharisma, "Must be between 0-100");
             this._txtCharisma.Location = new System.Drawing.Point(74, 265);
             this._txtCharisma.Name = "_txtCharisma";
             this._txtCharisma.Size = new System.Drawing.Size(100, 20);
             this._txtCharisma.TabIndex = 20;
             this._txtCharisma.Text = "50";
+            this._txtCharisma.Validating += new System.ComponentModel.CancelEventHandler(this.OnValidatingCharisma);
             // 
-            // errorProvider1
+            // _errors
             // 
-            this.errorProvider1.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
-            this.errorProvider1.ContainerControl = this;
-            // 
-            // errorProvider2
-            // 
-            this.errorProvider2.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
-            this.errorProvider2.ContainerControl = this;
-            // 
-            // errorProvider3
-            // 
-            this.errorProvider3.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
-            this.errorProvider3.ContainerControl = this;
+            this._errors.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
+            this._errors.ContainerControl = this;
             // 
             // CharacterForm
             // 
@@ -303,9 +297,7 @@
             this.MinimumSize = new System.Drawing.Size(590, 385);
             this.Name = "CharacterForm";
             this.Text = "Create New Character";
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this._errors)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -334,8 +326,6 @@
         private System.Windows.Forms.TextBox _txtAgility;
         private System.Windows.Forms.TextBox _txtConstitution;
         private System.Windows.Forms.TextBox _txtCharisma;
-        private System.Windows.Forms.ErrorProvider errorProvider1;
-        private System.Windows.Forms.ErrorProvider errorProvider3;
-        private System.Windows.Forms.ErrorProvider errorProvider2;
+        private System.Windows.Forms.ErrorProvider _errors;
     }
 }

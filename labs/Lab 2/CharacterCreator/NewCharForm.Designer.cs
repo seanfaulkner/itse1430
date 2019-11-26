@@ -34,7 +34,6 @@
             this.labelRace = new System.Windows.Forms.Label();
             this.labelAttributes = new System.Windows.Forms.Label();
             this.labelDescription = new System.Windows.Forms.Label();
-            this.Description = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.comboBoxProfession = new System.Windows.Forms.ComboBox();
             this.comboBoxRace = new System.Windows.Forms.ComboBox();
@@ -110,17 +109,6 @@
             this.labelDescription.Size = new System.Drawing.Size(60, 13);
             this.labelDescription.TabIndex = 8;
             this.labelDescription.Text = "Description";
-            // 
-            // Description
-            // 
-            this.Description.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.Description.Location = new System.Drawing.Point(270, 135);
-            this.Description.Multiline = true;
-            this.Description.Name = "Description";
-            this.Description.Size = new System.Drawing.Size(285, 156);
-            this.Description.TabIndex = 9;
             // 
             // button1
             // 
@@ -297,7 +285,6 @@
             this.Controls.Add(this.comboBoxRace);
             this.Controls.Add(this.comboBoxProfession);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.Description);
             this.Controls.Add(this.labelDescription);
             this.Controls.Add(this.labelAttributes);
             this.Controls.Add(this.labelRace);
@@ -305,6 +292,7 @@
             this.Controls.Add(this.labelName);
             this.Controls.Add(this.Name);
             this.MinimumSize = new System.Drawing.Size(590, 385);
+            this.Name = "NewCharForm";
             this.Text = "Create New Character";
             ((System.ComponentModel.ISupportInitialize)(this.Strength)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Intelligence)).EndInit();
@@ -324,7 +312,6 @@
         private System.Windows.Forms.Label labelRace;
         private System.Windows.Forms.Label labelAttributes;
         private System.Windows.Forms.Label labelDescription;
-        private System.Windows.Forms.TextBox Description;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.ComboBox comboBoxProfession;
         private System.Windows.Forms.ComboBox comboBoxRace;
