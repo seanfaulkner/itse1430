@@ -14,8 +14,7 @@ namespace CharacterCreator
     {
         public MainForm ()
         {
-            InitializeComponent ();
-            
+            InitializeComponent ();            
         }
 
         protected override void OnLoad (EventArgs e)
@@ -25,7 +24,7 @@ namespace CharacterCreator
             //
         }
 
-        private void ExitToolStripMenuItem_Click ( object sender, EventArgs e )
+        private void _OnExit ( object sender, EventArgs e )
         {
             Close ();
         }
@@ -36,31 +35,17 @@ namespace CharacterCreator
             form.ShowDialog (this);
         }
 
-        private void NewToolStripMenuItem_Click ( object sender, EventArgs e )
+        private void OnCharacterAdd ( object sender, EventArgs e )
         {         
             var form = new NewCharForm ();
             form.ShowDialog (this);
             form.Close ();
-        }        
-
-        public Character Add ( Character character ) // https://stackoverflow.com/questions/25137498/display-specified-text-for-listbox-items i think this listBox1 
-        {
-            ////Add to array
-            for (var index = 0; index < _characters.Length; ++index)
-            {
-                if (_characters[index] == null)
-                {
-                    _characters[index] = character;                    
-                    return character;
-                }
-            };
-            return character;
         }
         private void ListBox1_SelectedIndexChanged ( object sender, EventArgs e ) //nope
         {
-            GetAll();
+            GetSelectedCharacter();
         }
-        public Character[] GetAll ()
+        public Character GetSelectedCharacter ()
         {
             ////Filter out empty characters
             //var count = 0;
@@ -69,7 +54,7 @@ namespace CharacterCreator
             //        ++count;
 
             var index = 0;
-            var characters = new Character[_characters.Length];
+            var item = new Character[_characters];
             foreach (var character in _characters)
                 if (character != null)
                     characters[index++] = character;
@@ -88,7 +73,7 @@ namespace CharacterCreator
             return characters;
         }
 
-        private List<Character> _characters = new List<Movie> ();
+        private List<Character> _characters = new List<Character> ();
 
     }
 }
