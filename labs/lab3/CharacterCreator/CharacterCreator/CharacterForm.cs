@@ -131,7 +131,7 @@ namespace CharacterCreator
             var control = sender as TextBox;
 
             var value = GetAsInt32 (control);
-            if (value > 0 && value < 100)
+            if (value < 0 && value > 100)
             {
                 e.Cancel = true;
                 _errors.SetError (control, "Strength must be between 0-100");
@@ -147,7 +147,7 @@ namespace CharacterCreator
             var control = sender as TextBox;
 
             var value = GetAsInt32 (control);
-            if (value > 0 && value < 100)
+            if (value < 0 && value > 100)
             {
                 e.Cancel = true;
                 _errors.SetError (control, "Intelligence must be between 0-100");
@@ -162,7 +162,7 @@ namespace CharacterCreator
             var control = sender as TextBox;
 
             var value = GetAsInt32 (control);
-            if (value > 0 && value < 100)
+            if (value < 0 && value > 100)
             {
                 e.Cancel = true;
                 _errors.SetError (control, "Agility must be between 0-100");
@@ -177,7 +177,7 @@ namespace CharacterCreator
             var control = sender as TextBox;
 
             var value = GetAsInt32 (control);
-            if (value > 0 && value < 100)
+            if (value < 0 && value > 100)
             {
                 e.Cancel = true;
                 _errors.SetError (control, "Constitution must be between 0-100");
@@ -192,7 +192,7 @@ namespace CharacterCreator
             var control = sender as TextBox;
 
             var value = GetAsInt32 (control);
-            if (value > 0 && value < 100)
+            if (value < 0 && value > 100)
             {
                 e.Cancel = true;
                 _errors.SetError (control, "Charisma must be between 0-100");
