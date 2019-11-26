@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace CharacterCreator
 {
-    public partial class MainForm : Form
+    public partial class CharacterForm : Form
     {
-        public MainForm ()
+        public CharacterForm ()
         {
             InitializeComponent ();
         }
