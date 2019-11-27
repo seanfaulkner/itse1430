@@ -68,8 +68,9 @@ namespace Nile.Windows
                 Price = GetPrice(_txtPrice),
                 IsDiscontinued = _chkDiscontinued.Checked,
             };
-
-            //TODO: Validate product
+            
+            var results = ObjectValidator.TryValidateObject (product);
+            
 
             Product = product;
             DialogResult = DialogResult.OK;
