@@ -289,6 +289,7 @@
             this.MinimumSize = new System.Drawing.Size(590, 385);
             this.Name = "CharacterForm";
             this.Text = "Create New Character";
+            this.Load += new System.EventHandler(this.CharacterForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this._errors)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

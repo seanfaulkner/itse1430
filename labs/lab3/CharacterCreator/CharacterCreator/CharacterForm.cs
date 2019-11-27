@@ -201,5 +201,10 @@ namespace CharacterCreator
                 _errors.SetError (control, "");
             }
         }
+
+        private void CharacterForm_Load ( object sender, EventArgs e )
+        {
+
+        }
     }
 }
