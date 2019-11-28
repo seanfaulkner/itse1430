@@ -20,7 +20,7 @@ namespace Nile.Stores.Sql
             using(var cmd = new SqlCommand("AddProduct", conn))
             {
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
-
+                              
                 var parmName = new SqlParameter ("@name", product.Name);
                 cmd.Parameters.Add (parmName);
                 cmd.Parameters.AddWithValue ("@Description", product.Description);
@@ -79,7 +79,7 @@ namespace Nile.Stores.Sql
 
                     var da = new SqlDataAdapter () {
                         SelectCommand = cmd
-                    };
+                    };                  
 
                     //da.Fill (ds);
                 };
