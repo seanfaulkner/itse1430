@@ -122,8 +122,7 @@ namespace Nile.Stores.Sql
             {
                 cmd.CommandType = CommandType.StoredProcedure;
 
-                var parmName = new SqlParameter ("@name", product.Name);
-                cmd.Parameters.Add (parmName);
+                cmd.Parameters.AddWithValue("@name", product.Name);
                 cmd.Parameters.AddWithValue ("@description", product.Description);
                 cmd.Parameters.AddWithValue ("@price", product.Price);
                 cmd.Parameters.AddWithValue ("@id", product.Id);
@@ -138,7 +137,6 @@ namespace Nile.Stores.Sql
         private SqlConnection CreateConnection ()
         {
             var conn = new SqlConnection (_connectionString);
-            //conn.Open();
             return conn;
         }
 

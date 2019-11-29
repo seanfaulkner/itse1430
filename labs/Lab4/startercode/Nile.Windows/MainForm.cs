@@ -128,7 +128,6 @@ namespace Nile.Windows
             if (MessageBox.Show (this, $"Are you sure you want to delete '{product.Name}'?",
                                 "Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
                 return;
-
             
             try
             {
@@ -180,6 +179,7 @@ namespace Nile.Windows
             return null;
         }
 
+        // updates and sorts
         private void UpdateList ()
         {
             try
@@ -195,6 +195,7 @@ namespace Nile.Windows
             };
         }
 
+        // give me an ebumerable that can be sorted
         private void PlayWithEnumerable(IEnumerable<Product> product)
         {
             Product firstOne = product.FirstOrDefault ();
