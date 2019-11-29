@@ -123,15 +123,17 @@ namespace Nile.Windows
         private void DeleteProduct ( Product product )
         {
             //Confirm
-            if (MessageBox.Show(this, $"Are you sure you want to delete '{product.Name}'?",
+            if (MessageBox.Show (this, $"Are you sure you want to delete '{product.Name}'?",
                                 "Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
                 return;
+
             
             try
             {
-             //Delete product
-                _database.Remove(product.Id);
-                UpdateList();
+                //Delete product
+                _database.Remove (product.Id);
+                UpdateList ();
+
             } catch (Exception ex)
             {
                 MessageBox.Show ("Delete failed", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);

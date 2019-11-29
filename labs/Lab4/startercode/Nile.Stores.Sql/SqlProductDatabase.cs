@@ -20,14 +20,14 @@ namespace Nile.Stores.Sql
             using(var cmd = new SqlCommand("AddProduct", conn))
             {
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
-                              
-                var parmName = new SqlParameter ("@name", product.Name);
-                cmd.Parameters.Add (parmName);
-                cmd.Parameters.AddWithValue ("@Description", product.Description);
-                cmd.Parameters.AddWithValue ("@Price", product.Price);
+
+                cmd.Parameters.AddWithValue ("@name", product.Name);
+                cmd.Parameters.AddWithValue ("@price", product.Price);
+                cmd.Parameters.AddWithValue ("@description", product.Description);
+                cmd.Parameters.AddWithValue ("@isDiscontinued", product.IsDiscontinued);
 
                 conn.Open ();
-                var result = (decimal)cmd.ExecuteScalar ();
+                var result = (decimal)cmd.ExecuteNonQuery ();
                 product.Id = Convert.ToInt32 (result);
 
                 return product;
@@ -74,14 +74,14 @@ namespace Nile.Stores.Sql
             {
                 using (var cmd = conn.CreateCommand ())
                 {
-                    cmd.CommandText = "GetProduct";
+                    cmd.CommandText = "GetAllProducts";
                     cmd.CommandType = System.Data.CommandType.StoredProcedure;
 
                     var da = new SqlDataAdapter () {
                         SelectCommand = cmd
                     };                  
 
-                    //da.Fill (ds);
+                    da.Fill (ds);
                 };
             };
 
@@ -104,7 +104,7 @@ namespace Nile.Stores.Sql
         public void Remove ( int id )
         {
             using (var conn = CreateConnection ())
-            using (var cmd = new SqlCommand ("DeleteProduct", conn))
+            using (var cmd = new SqlCommand ("RemoveProduct", conn))
             {
                 cmd.CommandType = CommandType.StoredProcedure;
 
@@ -112,7 +112,7 @@ namespace Nile.Stores.Sql
                 cmd.Parameters[0].Value = id;
 
                 conn.Open ();
-                cmd.ExecuteNonQuery ();
+                cmd.ExecuteScalar ();
             };
         }
         public Product Update ( Product product )
