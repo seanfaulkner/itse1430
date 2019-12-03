@@ -3,6 +3,8 @@
  */
 using System;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace Nile.Windows
@@ -96,6 +98,21 @@ namespace Nile.Windows
                 _errors.SetError(_txtPrice, "Price must be >= 0.");
             } else
                 _errors.SetError(_txtPrice, "");
+        }
+
+        private bool Validate ( IValidatableObject product )
+        {
+            var results = ObjectValidator.TryValidateObject (product);
+            if (results.Count () > 0)
+            {
+                foreach (var result in results)
+                {
+                    MessageBox.Show (this, result.ErrorMessage, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                };
+                return false;
+            };
+
+            return true;
         }
         #endregion
 
