@@ -48,6 +48,7 @@ namespace Nile.Stores.Sql
                     {
                         var NameIndex = reader.GetOrdinal ("Name");
                         var PriceIndex = reader.GetOrdinal ("Price");
+                        var IsDiscontinuedIndex = reader.GetOrdinal ("IsDiscontinued");
 
                         var product = new Product () {
                             Id = (int)reader[0],
@@ -55,8 +56,8 @@ namespace Nile.Stores.Sql
 
                             //FIX: Handle null
                             Description = !reader.IsDBNull (3) ? reader.GetString (3) : "",
-                            Price = (decimal)reader.GetValue (2)
-                            
+                            Price = (decimal)reader.GetValue (2),
+                            IsDiscontinued = reader.GetBoolean(4)                            
                         };
 
                         return product;
@@ -95,7 +96,8 @@ namespace Nile.Stores.Sql
                         Id = (int)row[0],
                         Name = row["Name"] as string,
                         Description = row.Field<string> ("Description"),
-                        Price = row.Field<decimal> ("Price")
+                        Price = row.Field<decimal> ("Price"),
+                        IsDiscontinued = row.Field<bool>("IsDiscontinued")
                     };
 
                     yield return product;
@@ -127,6 +129,7 @@ namespace Nile.Stores.Sql
                 cmd.Parameters.AddWithValue ("@description", product.Description);
                 cmd.Parameters.AddWithValue ("@price", product.Price);
                 cmd.Parameters.AddWithValue ("@id", product.Id);
+                cmd.Parameters.AddWithValue ("@isDiscontinued", product.IsDiscontinued);
 
                 conn.Open ();
                 cmd.ExecuteNonQuery ();
