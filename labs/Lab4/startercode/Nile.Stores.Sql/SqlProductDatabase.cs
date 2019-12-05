@@ -54,7 +54,6 @@ namespace Nile.Stores.Sql
                             Id = (int)reader[0],
                             Name = reader["Name"] as string,
 
-                            //FIX: Handle null
                             Description = !reader.IsDBNull (3) ? reader.GetString (3) : "",
                             Price = (decimal)reader.GetValue (2),
                             IsDiscontinued = reader.GetBoolean(4)                            
@@ -104,6 +103,8 @@ namespace Nile.Stores.Sql
                 };
             };
         }
+
+        // removes it added isDiscontinued
         public void Remove ( int id )
         {
             using (var conn = CreateConnection ())
@@ -118,6 +119,7 @@ namespace Nile.Stores.Sql
                 cmd.ExecuteScalar ();
             };
         }
+
         public Product Update ( Product product )
         {
             using (var conn = CreateConnection ())

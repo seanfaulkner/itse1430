@@ -18,7 +18,7 @@ namespace Nile.Web.Controllers
             _database = new SqlProductDatabase (connString.ConnectionString);
         }
 
-        // GET: Product
+        // makes the list of movies
         [HttpGet]
         public ActionResult Index()
         {
@@ -54,7 +54,6 @@ namespace Nile.Web.Controllers
                 };
             } catch (Exception e)
             {
-                // Don't use Exception overload - doesn't work
                 ModelState.AddModelError ("", e.Message);
             };
 
@@ -88,8 +87,7 @@ namespace Nile.Web.Controllers
                     return RedirectToAction ("Index", new { id = product.Id });
                 };
             } catch (Exception e)
-            {
-                //Don't use Exception overload - doesn't work
+            {                
                 ModelState.AddModelError ("", e.Message);
             };
 
@@ -118,13 +116,13 @@ namespace Nile.Web.Controllers
                 return RedirectToAction ("Index");
             } catch (Exception e)
             {
-                //Don't use Exception overload - doesn't work
                 ModelState.AddModelError ("", e.Message);
             };
 
             return View (model);
         }
 
+        // shows the details of the selected item
         [HttpGet]
         public ActionResult Details ( int id )
         {

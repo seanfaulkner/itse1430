@@ -114,7 +114,6 @@ namespace Nile.Windows
             if (product != null)
                 DeleteProduct(product);
 			
-			//Don't continue with key
             e.SuppressKeyPress = true;
         }
 
@@ -204,8 +203,7 @@ namespace Nile.Windows
             int id = 1;
             var otherProduct = product.Where (p => p.Id > ++id);
         }
-
-        // took out the read only
+        
         private IProductDatabase _database = new Nile.Stores.MemoryProductDatabase();
         #endregion
 

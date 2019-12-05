@@ -7,7 +7,7 @@ namespace Nile.Web.Models
 {
     public static class ProductModelExtensions
     {
-        /// <summary>Converts a model to a movie.</summary>
+        /// <summary>Converts a model to a product.</summary>
         /// <param name="source">The source.</param>
         /// <returns>The movie.</returns>
         public static Product ToDomain ( this ProductModel source )
@@ -24,7 +24,7 @@ namespace Nile.Web.Models
             };
         }
 
-        /// <summary>Converts a movie to a model.</summary>
+        /// <summary>Converts a product to a model.</summary>
         /// <param name="source">The source.</param>
         /// <returns>The model.</returns>
         public static ProductModel ToModel ( this Product source )
