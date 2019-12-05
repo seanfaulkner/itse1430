@@ -93,7 +93,7 @@ namespace Nile.Web.Controllers
                 ModelState.AddModelError ("", e.Message);
             };
 
-            return View (model);
+            return View ();
         }
 
         private readonly IProductDatabase _database;
