@@ -96,6 +96,46 @@ namespace Nile.Web.Controllers
             return View ();
         }
 
+        [HttpGet]
+        public ActionResult Delete ( int id )
+        {
+            var product = _database.Get (id);
+            if (product == null)
+                return HttpNotFound ();
+
+            var model = product.ToModel ();
+            return View (model);
+        }
+
+        [HttpPost]
+        public ActionResult Delete ( ProductModel model )
+        {
+            try
+            {
+                _database.Remove (model.Id);
+
+                //PRG 
+                return RedirectToAction ("Index");
+            } catch (Exception e)
+            {
+                //Don't use Exception overload - doesn't work
+                ModelState.AddModelError ("", e.Message);
+            };
+
+            return View (model);
+        }
+
+        [HttpGet]
+        public ActionResult Details ( int id )
+        {
+            var product = _database.Get (id);
+            if (product == null)
+                return HttpNotFound ();
+
+            var model = product.ToModel ();
+            return View (model);
+        }
+
         private readonly IProductDatabase _database;
     }
 }
