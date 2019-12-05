@@ -54,8 +54,9 @@ namespace Nile.Stores.Sql
                             Name = reader["Name"] as string,
 
                             //FIX: Handle null
-                            Description = !reader.IsDBNull (2) ? reader.GetString (2) : "",
-                            Price = (decimal)reader.GetValue (3)
+                            Description = !reader.IsDBNull (3) ? reader.GetString (3) : "",
+                            Price = (decimal)reader.GetValue (2)
+                            
                         };
 
                         return product;
